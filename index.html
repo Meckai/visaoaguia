@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visão de Águia – Segurança Eletrônica em Belém</title>
+<meta name="description" content="Segurança eletrônica em Belém. Monitoramento 24h, CFTV, alarmes, cercas elétricas e controle de acesso. Orçamento gratuito.">
+<meta property="og:title" content="Visão de Águia – Segurança Eletrônica em Belém">
+<meta property="og:description" content="Monitoramento 24h, CFTV, alarmes, cercas elétricas e controle de acesso em Belém e região.">
+<meta property="og:image" content="img/logo.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/jpeg" href="img/logo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#090b0d;color:#f2ede6;font-family:'Barlow',sans-serif;overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:root{
+  --black:#090b0d;--dark:#0f1215;--card:#141719;--card2:#181c20;
+  --border:rgba(255,255,255,0.07);--gold:#c9961a;--gold-lt:#e8b832;
+  --wpp:#25d366;--white:#f2ede6;--muted:#6b7580;--soft:#9aa5b0;
+  --fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --r:3px;--sh:0 12px 40px rgba(0,0,0,.35);--sh-sm:0 4px 16px rgba(0,0,0,.25);
+}
+.container{width:min(1120px,92%);margin-inline:auto}
+.label{display:inline-block;font-family:var(--fc);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.title{font-family:var(--fd);font-size:clamp(42px,5vw,72px);line-height:.96;letter-spacing:.5px}
+.title em{color:var(--gold);font-style:normal;display:block}
+.body-text{font-size:15px;line-height:1.75;color:var(--soft)}
+.btn-wpp{display:inline-flex;align-items:center;gap:10px;background:var(--wpp);color:#fff;padding:15px 30px;font-family:var(--fc);font-size:17px;font-weight:700;letter-spacing:.8px;border-radius:var(--r);box-shadow:0 8px 28px rgba(37,211,102,.22);transition:transform .2s,box-shadow .2s}
+.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(37,211,102,.32)}
+.btn-wpp svg{width:20px;height:20px;flex-shrink:0}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);padding:12px 26px;font-family:var(--fc);font-size:15px;font-weight:700;letter-spacing:.8px;border-radius:var(--r);transition:background .2s,transform .15s}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-1px)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}.rv.d5{transition-delay:.5s}
+.topbar{background:var(--gold);color:var(--black);text-align:center;padding:9px 5%;font-family:var(--fc);font-size:14px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.topbar-link{background:var(--black);color:var(--gold);padding:4px 14px;border-radius:2px;font-size:12px;font-weight:700;letter-spacing:1px;transition:opacity .2s}
+.topbar-link:hover{opacity:.8}
+nav{position:sticky;top:0;z-index:99;background:rgba(9,11,13,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px 0}
+.nav-logo{font-family:var(--fd);font-size:24px;letter-spacing:2px;color:var(--gold);display:flex;align-items:center;gap:10px}
+.nav-logo span{color:var(--white)}
+.nav-logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.nav-meta{display:flex;align-items:center;gap:24px}
+.nav-phone{font-family:var(--fc);font-size:14px;font-weight:600;letter-spacing:.5px;color:var(--soft)}
+.nav-phone strong{color:var(--white)}
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:101}
+.hamburger span{width:24px;height:2px;background:var(--white);transition:transform .3s,opacity .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;inset:0;top:72px;background:rgba(9,11,13,.98);backdrop-filter:blur(20px);z-index:98;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--fc);font-size:20px;font-weight:700;letter-spacing:1px;padding:12px 24px;transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+.hero{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 5% 80px 0;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,150,26,.12);border:1px solid rgba(201,150,26,.25);color:var(--gold);font-family:var(--fc);font-size:11px;font-weight:700;letter-spacing:3px;padding:6px 14px;border-radius:2px;width:fit-content;margin-bottom:28px}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--fd);font-size:clamp(54px,6.5vw,92px);line-height:.93;letter-spacing:.5px;margin-bottom:22px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:16px;line-height:1.7;color:var(--soft);max-width:420px;margin-bottom:36px}
+.hero-checks{display:flex;flex-direction:column;gap:10px;margin-bottom:40px}
+.hero-check{display:flex;align-items:center;gap:10px;font-family:var(--fc);font-size:15px;font-weight:600;letter-spacing:.3px}
+.hero-check::before{content:'';width:18px;height:18px;flex-shrink:0;border:2px solid var(--gold);border-radius:50%;background:rgba(201,150,26,.12) url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%23c9961a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/10px}
+.hero-trust{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);display:flex;gap:32px}
+.trust-item{display:flex;flex-direction:column}
+.trust-num{font-family:var(--fd);font-size:32px;color:var(--gold);line-height:1}
+.trust-label{font-size:12px;color:var(--muted);font-family:var(--fc);letter-spacing:.5px;margin-top:2px}
+.hero-visual{position:relative;overflow:hidden;background:#0d1014}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.45) saturate(.6)}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 0%,rgba(9,11,13,.3) 50%,transparent 100%)}
+.hero-badge{position:absolute;bottom:36px;right:36px;background:var(--gold);color:var(--black);width:96px;height:96px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--fd);text-align:center;line-height:1.1;animation:float 3s ease-in-out infinite;box-shadow:0 8px 30px rgba(201,150,26,.35)}
+.hero-badge strong{font-size:28px;display:block}
+.hero-badge span{font-size:10px;letter-spacing:.5px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.cred-bar{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0}
+.cred-inner{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.cred-item{display:flex;align-items:center;gap:10px;padding:10px 36px;border-right:1px solid var(--border);font-family:var(--fc);font-size:15px;font-weight:600;color:var(--soft);letter-spacing:.3px;white-space:nowrap}
+.cred-item:last-child{border-right:none}
+.cred-icon{width:20px;height:20px;flex-shrink:0;color:var(--gold)}
+.problem{padding:80px 0;background:var(--dark)}
+.problem-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.problem-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.problem-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-left:2px solid rgba(180,50,40,.5);font-size:14px;color:var(--soft);border-radius:var(--r)}
+.problem-item::before{content:'—';color:#b43228;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;font-family:var(--fc)}
+.solution-box{background:var(--card2);border:1px solid var(--border);border-radius:var(--r);padding:44px;position:relative;box-shadow:var(--sh)}
+.solution-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));border-radius:var(--r) var(--r) 0 0}
+.solution-box p{margin-top:16px;font-size:15px;line-height:1.75;color:var(--soft)}
+.solution-checks{margin-top:28px;display:flex;flex-direction:column;gap:10px}
+.solution-check{display:flex;align-items:center;gap:10px;font-family:var(--fc);font-size:15px;font-weight:600;color:var(--white)}
+.solution-check::before{content:'';width:16px;height:16px;flex-shrink:0;border:2px solid var(--gold);border-radius:50%;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%23c9961a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/10px}
+.howto{padding:80px 0}
+.howto-header{text-align:center;margin-bottom:64px}
+.howto-header .body-text{max-width:460px;margin:16px auto 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.step{background:var(--card);padding:36px 28px 40px;position:relative;transition:background .25s}
+.step:hover{background:var(--card2)}
+.step-num{font-family:var(--fd);font-size:56px;line-height:1;color:rgba(201,150,26,.12);position:absolute;top:16px;right:16px;pointer-events:none}
+.step-icon{display:flex;align-items:center;margin-bottom:20px;color:var(--gold)}
+.step-icon svg{width:28px;height:28px}
+.step h3{font-family:var(--fc);font-size:19px;font-weight:700;letter-spacing:.3px;margin-bottom:10px}
+.step p{font-size:14px;line-height:1.65;color:var(--muted)}
+.step-arrow{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:14px;height:14px;background:var(--gold);clip-path:polygon(0 50%,100% 0,100% 100%);z-index:2}
+.step:last-child .step-arrow{display:none}
+.services{padding:80px 0;background:var(--dark)}
+.services-header{margin-bottom:56px}
+.services-group-label{font-family:var(--fc);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:48px}
+.service-card{background:var(--card);padding:32px 26px;display:flex;flex-direction:column;gap:10px;transition:background .2s;position:relative;overflow:hidden}
+.service-card:hover{background:var(--card2)}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.service-card:hover::after{transform:scaleX(1)}
+.sc-icon{color:var(--gold);margin-bottom:2px}
+.sc-icon svg{width:26px;height:26px}
+.sc-name{font-family:var(--fc);font-size:17px;font-weight:700;letter-spacing:.3px;color:var(--white);line-height:1.2}
+.sc-desc{font-size:13px;line-height:1.6;color:var(--muted)}
+.sc-benefit{font-family:var(--fc);font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.3px;display:flex;align-items:center;gap:6px;margin-top:auto}
+.sc-benefit::before{content:'→'}
+.sc-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--fc);font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--soft);margin-top:8px;transition:color .2s}
+.service-card:hover .sc-cta{color:var(--white)}
+.sc-cta::after{content:'↗';font-size:11px}
+.differentials{padding:80px 0}
+.differentials-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.diff-item{background:var(--card);padding:28px;transition:background .2s}
+.diff-item:hover{background:var(--card2)}
+.diff-num{font-family:var(--fd);font-size:40px;color:rgba(201,150,26,.15);line-height:1;display:block;margin-bottom:8px}
+.diff-item h4{font-family:var(--fc);font-size:16px;font-weight:700;letter-spacing:.3px;margin-bottom:8px;color:var(--white)}
+.diff-item p{font-size:13px;line-height:1.6;color:var(--muted)}
+.diff-highlight{background:var(--gold);border-radius:var(--r);padding:36px;color:var(--black)}
+.diff-highlight h3{font-family:var(--fd);font-size:36px;line-height:1;margin-bottom:12px}
+.diff-highlight p{font-size:15px;line-height:1.7;opacity:.8;margin-bottom:24px}
+.audience{padding:80px 0;background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.audience-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center}
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.audience-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px 22px;display:flex;align-items:center;gap:14px;transition:border-color .2s,background .2s;box-shadow:var(--sh-sm)}
+.audience-card:hover{border-color:rgba(201,150,26,.3);background:var(--card2)}
+.audience-card svg{width:28px;height:28px;flex-shrink:0;color:var(--gold)}
+.audience-card p{font-family:var(--fc);font-size:16px;font-weight:700;letter-spacing:.3px}
+.proof{padding:80px 0}
+.proof-header{margin-bottom:48px}
+.proof-header .body-text{max-width:520px;margin-top:12px}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px;border-radius:var(--r);overflow:hidden}
+.proof-item{position:relative;overflow:hidden;aspect-ratio:2/3;cursor:pointer;background:var(--card2)}
+.proof-item img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.5) saturate(.5);transition:transform .5s cubic-bezier(.25,.46,.45,.94),filter .4s}
+.proof-item:hover img{transform:scale(1.07);filter:brightness(.7) saturate(.75)}
+.proof-caption{position:absolute;bottom:0;left:0;right:0;padding:40px 18px 20px;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.proof-caption-tag{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px}
+.proof-caption h4{font-family:var(--fc);font-size:16px;font-weight:700;letter-spacing:.3px}
+.testimonials{padding:80px 0;background:var(--dark);border-top:1px solid var(--border)}
+.testimonials-header{margin-bottom:48px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.testi-card{background:var(--card);padding:32px 28px;display:flex;flex-direction:column;gap:0;transition:background .2s}
+.testi-card:hover{background:var(--card2)}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px}
+.testi-star{width:14px;height:14px;color:var(--gold-lt)}
+.testi-star svg{width:14px;height:14px}
+.testi-quote{font-size:14px;line-height:1.75;color:var(--soft);font-style:italic;margin-bottom:24px;flex:1}
+.testi-quote strong{color:var(--white);font-style:normal}
+.testi-author{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--border)}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:rgba(201,150,26,.12);border:1px solid rgba(201,150,26,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1rem;color:var(--gold);flex-shrink:0}
+.testi-name{font-family:var(--fc);font-size:14px;font-weight:700;letter-spacing:.3px;color:var(--white)}
+.testi-role{font-family:var(--fc);font-size:11px;color:var(--muted);letter-spacing:.3px;margin-top:2px}
+.google-bar{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px;padding:18px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r)}
+.google-bar svg{width:22px;height:22px;flex-shrink:0}
+.google-bar span{font-family:var(--fc);font-size:15px;font-weight:700;color:var(--white)}
+.google-bar em{color:var(--gold);font-style:normal}
+.google-bar a{font-family:var(--fc);font-size:13px;font-weight:700;letter-spacing:.5px;color:var(--gold);border-bottom:1px solid rgba(201,150,26,.3);padding-bottom:1px;transition:border-color .2s}
+.google-bar a:hover{border-color:var(--gold)}
+.faq{padding:80px 0}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:rgba(201,150,26,.3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;gap:16px;transition:background .2s}
+.faq-q:hover{background:rgba(255,255,255,.03)}
+.faq-q span{font-family:var(--fc);font-size:16px;font-weight:700;letter-spacing:.3px;line-height:1.4}
+.faq-icon{width:24px;height:24px;border:1px solid var(--border);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .3s,border-color .3s,background .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--gold);background:var(--gold)}
+.faq-icon svg{width:10px;transition:color .3s}
+.faq-item.open .faq-icon svg{color:var(--black)}
+.faq-a{display:none;padding:0 22px 18px;font-size:14px;line-height:1.8;color:var(--soft)}
+.faq-item.open .faq-a{display:block}
+.cta-section{padding:100px 0;background:var(--dark);border-top:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+.cta-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:220px;color:rgba(255,255,255,.015);white-space:nowrap;pointer-events:none;user-select:none}
+.cta-inner{position:relative;z-index:1}
+.cta-section h2{font-family:var(--fd);font-size:clamp(44px,6vw,80px);line-height:1;margin-bottom:18px}
+.cta-section h2 em{color:var(--gold);font-style:normal}
+.cta-section .body-text{max-width:500px;margin:0 auto 48px;font-size:16px}
+.guarantee{padding:60px 0}
+.guarantee-box{display:flex;align-items:center;gap:40px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:44px;box-shadow:var(--sh)}
+.guarantee-icon{flex-shrink:0;color:var(--gold)}
+.guarantee-icon svg{width:48px;height:48px}
+.guarantee-box h3{font-family:var(--fc);font-size:22px;font-weight:700;letter-spacing:.3px;margin-bottom:10px}
+.guarantee-box p{font-size:15px;line-height:1.7;color:var(--soft)}
+footer{background:#060708;border-top:1px solid var(--border);padding:70px 0 32px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:56px;border-bottom:1px solid var(--border);margin-bottom:28px}
+.footer-logo{font-family:var(--fd);font-size:30px;letter-spacing:2px;color:var(--gold);display:flex;align-items:center;gap:10px}
+.footer-logo span{color:var(--white)}
+.footer-logo-img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.footer-tagline{font-size:13px;color:var(--muted);line-height:1.7;margin-top:12px;max-width:260px}
+.footer-col h4{font-family:var(--fc);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.footer-col a,.footer-col p{display:block;font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.5;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+.footer-col .hours{font-family:var(--fc);font-size:13px;font-weight:600;color:var(--gold);margin-top:4px}
+.footer-contact-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:10px}
+.footer-contact-item svg{width:14px;height:14px;flex-shrink:0;color:var(--gold)}
+.footer-contact-item a{color:var(--muted);transition:color .2s}
+.footer-contact-item a:hover{color:var(--white)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#333}
+.wpp-float{position:fixed;bottom:28px;right:28px;z-index:1000;background:var(--wpp);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;animation:wpp-f 3s ease-in-out infinite}
+.wpp-float:hover{transform:scale(1.1)!important;box-shadow:0 10px 32px rgba(37,211,102,.55);animation:none}
+.wpp-float svg{width:28px;height:28px}
+@keyframes wpp-f{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.svg-wpp{fill:currentColor}
+@media(max-width:1024px){
+  .steps{grid-template-columns:1fr 1fr}.step-arrow{display:none}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .differentials-inner{grid-template-columns:1fr}
+  .diff-grid{max-width:560px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+  .testi-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-content{padding:60px 0}
+  .hero-visual{height:55vw}
+  .hero-grad{background:linear-gradient(180deg,var(--black) 0%,rgba(9,11,13,.2) 50%,transparent 100%)}
+  .hero-trust{gap:20px}
+  .problem-inner,.audience-inner{grid-template-columns:1fr;gap:40px}
+  .cred-inner{flex-direction:column}
+  .cred-item{border-right:none;border-bottom:1px solid var(--border);justify-content:center}
+  .proof-grid{grid-template-columns:1fr 1fr}
+  .audience-grid{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .guarantee-box{flex-direction:column;padding:28px;text-align:center}
+  .nav-phone{display:none}
+  .hamburger{display:flex}
+  .nav-meta .btn-gold{display:none}
+  .testi-grid{grid-template-columns:1fr}
+  .google-bar{flex-wrap:wrap;justify-content:center;text-align:center}
+}
+@media(max-width:560px){
+  .steps,.services-grid,.diff-grid,.audience-grid{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr 1fr}
+  .hero-trust{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Orçamento gratuito para residências e empresas em Belém &bull; Retorno em até 24h</span>
+  <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+or%C3%A7amento+gratuito." target="_blank" class="topbar-link">WhatsApp →</a>
+</div>
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo"><img src="img/logo.jpg" alt="Visão de Águia" class="nav-logo-img">VISÃO<span> DE ÁGUIA</span></a>
+    <div class="nav-meta">
+      <span class="nav-phone"><strong>(91) 98232-4510</strong> · Belém – PA</span>
+      <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+or%C3%A7amento+gratuito." target="_blank" class="btn-gold">Solicitar orçamento</a>
+      <div class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.mobile-menu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="#servicos" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.hamburger').classList.remove('active')">Serviços</a>
+  <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+or%C3%A7amento+gratuito." target="_blank" class="btn-wpp" style="font-size:15px;padding:12px 24px">
+    <svg class="svg-wpp" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Solicitar Orçamento
+  </a>
+</div>
+<!-- HERO -->
+<section class="hero">
+  <div style="display:contents">
+    <div class="hero-content rv" style="padding-left:max(4%,calc((100vw - 1120px)/2 + 4%))">
+      <div class="hero-tag">SEGURANÇA ELETRÔNICA · BELÉM – PA</div>
+      <h1>Seu imóvel protegido <em>de verdade.</em></h1>
+      <p class="hero-sub">Monitoramento 24h, CFTV, alarmes, cercas elétricas e controle de acesso. Equipe técnica local com central própria em Belém.</p>
+      <div class="hero-checks">
+        <div class="hero-check">Central própria de monitoramento 24h</div>
+        <div class="hero-check">Instalação profissional com garantia</div>
+        <div class="hero-check">Atendimento rápido em toda Belém e região</div>
+      </div>
+      <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+or%C3%A7amento+gratuito." target="_blank" class="btn-wpp">
+        <svg class="svg-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar Orçamento Gratuito
+      </a>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-num" data-target="4">0</span><span class="trust-label">Anos de atuação</span></div>
+        <div class="trust-item"><span class="trust-num" data-target="1000">0</span><span class="trust-label">Instalações realizadas</span></div>
+        <div class="trust-item"><span class="trust-num" data-target="24">0</span><span class="trust-label">Monitoramento</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="img/foto-hero.png" alt="Central de monitoramento Visão de Águia">
+      <div class="hero-grad"></div>
+      <div class="hero-badge"><strong>4+</strong><span>ANOS EM<br>BELÉM</span></div>
+    </div>
+  </div>
+</section>
+<!-- CRED BAR -->
+<div class="cred-bar">
+  <div class="container">
+    <div class="cred-inner">
+      <div class="cred-item rv"><span class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></span>Atendimento residencial e empresarial</div>
+      <div class="cred-item rv d1"><span class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Equipe técnica treinada</div>
+      <div class="cred-item rv d2"><span class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></span>Soluções sob medida</div>
+      <div class="cred-item rv d3"><span class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>Instalação profissional garantida</div>
+    </div>
+  </div>
+</div>
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-inner">
+      <div class="rv">
+        <p class="label">O problema</p>
+        <h2 class="title">Seu imóvel está <em>realmente</em> protegido?</h2>
+        <p class="body-text" style="margin-top:16px">Muitas casas e empresas em Belém estão vulneráveis porque:</p>
+        <ul class="problem-list">
+          <li class="problem-item">Não possuem sistema de monitoramento ativo</li>
+          <li class="problem-item">Câmeras paradas ou sem manutenção há meses</li>
+          <li class="problem-item">Sistemas desatualizados que não funcionam</li>
+          <li class="problem-item">Nenhuma resposta rápida em caso de ocorrência</li>
+        </ul>
+      </div>
+      <div class="solution-box rv d2">
+        <p class="label">A solução</p>
+        <h3 class="title" style="font-size:clamp(34px,3vw,50px)">Segurança <em>completa</em></h3>
+        <p>A Visão de Águia resolve isso com soluções completas de segurança eletrônica. Instalamos, configuramos e monitoramos todo o sistema para que você tenha tranquilidade 24 horas, todos os dias.</p>
+        <div class="solution-checks">
+          <div class="solution-check">Central própria de monitoramento 24h</div>
+          <div class="solution-check">Técnicos qualificados e treinados</div>
+          <div class="solution-check">Resposta rápida em toda Belém</div>
+          <div class="solution-check">Equipamentos profissionais de qualidade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- HOW IT WORKS -->
+<section class="howto">
+  <div class="container">
+    <div class="howto-header rv">
+      <p class="label">Processo</p>
+      <h2 class="title">Como <em>funciona</em></h2>
+      <p class="body-text">Do primeiro contato até seu imóvel 100% protegido — simples e rápido.</p>
+    </div>
+    <div class="steps rv d1">
+      <div class="step"><span class="step-num">01</span><div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>Você fala com a equipe</h3><p>Entre em contato pelo WhatsApp. Nossa equipe responde rápido e entende sua necessidade sem enrolação.</p><div class="step-arrow"></div></div>
+      <div class="step"><span class="step-num">02</span><div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>Fazemos a avaliação</h3><p>Analisamos o imóvel, identificamos os pontos de risco e indicamos a melhor solução para o seu caso.</p><div class="step-arrow"></div></div>
+      <div class="step"><span class="step-num">03</span><div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>Instalamos o sistema</h3><p>Nossa equipe técnica realiza a instalação com equipamentos profissionais e acabamento correto.</p><div class="step-arrow"></div></div>
+      <div class="step"><span class="step-num">04</span><div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Seu imóvel fica protegido</h3><p>Com o sistema ativo e monitorado pela nossa central, você tem segurança real 24 horas por dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="services-header rv"><p class="label">O que fazemos</p><h2 class="title" style="font-size:clamp(36px,4.5vw,72px);white-space:nowrap">Nossos <em style="display:inline">Serviços</em></h2></div>
+    <p class="services-group-label rv">Soluções Principais</p>
+    <div class="services-grid rv d1">
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="sc-name">Monitoramento 24 Horas</div><div class="sc-desc">Proteção contínua com acompanhamento em tempo real pela nossa central própria.</div><div class="sc-benefit">Resposta rápida em qualquer situação</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+monitoramento+24h." target="_blank" class="sc-cta">Saiba mais</a></div>
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="sc-name">Câmeras CFTV</div><div class="sc-desc">Instalação profissional de câmeras para monitorar sua casa ou empresa em tempo real.</div><div class="sc-benefit">Acesso remoto pelo celular</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+cameras+CFTV." target="_blank" class="sc-cta">Saiba mais</a></div>
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 01-3.46 0"></path></svg></div><div class="sc-name">Sistema de Alarme</div><div class="sc-desc">Alarme que alerta imediatamente qualquer tentativa de invasão com notificação instantânea.</div><div class="sc-benefit">Notificação imediata no celular</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+sistema+de+alarme." target="_blank" class="sc-cta">Saiba mais</a></div>
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13,2 13,9 22,9"/><polyline points="11,22 11,15 2,15"/><path d="M22 9L13 2 2 9l9 13 11-13z"/></svg></div><div class="sc-name">Cerca Elétrica</div><div class="sc-desc">Proteção do perímetro com sistema de cerca elétrica eficiente e altamente visível.</div><div class="sc-benefit">Inibe invasões antes de acontecerem</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+cerca+eletrica." target="_blank" class="sc-cta">Saiba mais</a></div>
+    </div>
+    <p class="services-group-label rv">Soluções Complementares</p>
+    <div class="services-grid rv d1">
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="sc-name">Concertina</div><div class="sc-desc">Barreira física reforçada para muros e áreas externas que dificulta qualquer invasão.</div><div class="sc-benefit">Proteção perimetral reforçada</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+concertina." target="_blank" class="sc-cta">Saiba mais</a></div>
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="sc-name">Fechadura Elétrica</div><div class="sc-desc">Controle de acesso moderno e seguro. Abre e fecha remotamente pelo celular ou painel.</div><div class="sc-benefit">Controle total do acesso</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+fechadura+eletrica." target="_blank" class="sc-cta">Saiba mais</a></div>
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="sc-name">Manutenção</div><div class="sc-desc">Manutenção em sistemas de CFTV, alarmes e equipamentos de segurança eletrônica.</div><div class="sc-benefit">Seu sistema sempre funcionando</div><a href="https://wa.me/5591982324510?text=Preciso+de+manutencao+no+meu+sistema." target="_blank" class="sc-cta">Saiba mais</a></div>
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div><div class="sc-name">Motor de Portão</div><div class="sc-desc">Instalação e manutenção de motores de portão automático para residências e empresas.</div><div class="sc-benefit">Praticidade e segurança na entrada</div><a href="https://wa.me/5591982324510?text=Preciso+de+motor+de+portao." target="_blank" class="sc-cta">Saiba mais</a></div>
+    </div>
+    <p class="services-group-label rv" style="margin-top:48px">Soluções para Condomínios</p>
+    <div class="services-grid rv d1" style="grid-template-columns:1fr">
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div class="sc-name">Adequações em Condomínios (GMTECH)</div><div class="sc-desc">Reestruturação completa: organização de rack de cabeamento, manutenção de DVRs, modernização do controle de acesso (biometria/facial) e cancelas. Tudo em conformidade técnica.</div><div class="sc-benefit">Infraestrutura organizada e acesso seguro</div><a href="https://wa.me/5591982324510?text=Preciso+de+adequacao+para+meu+condominio." target="_blank" class="sc-cta">Falar com o técnico</a></div>
+    </div>
+  </div>
+</section>
+<!-- DIFFERENTIALS -->
+<section class="differentials">
+  <div class="container">
+    <div class="differentials-inner">
+      <div class="rv">
+        <p class="label">Por que nos escolher</p>
+        <h2 class="title">Nossos <em>pilares</em></h2>
+        <p class="body-text" style="margin-top:18px;margin-bottom:36px">Segurança com padrão profissional não é só instalar equipamento. É processo, treinamento e comprometimento com seu resultado.</p>
+        <div class="diff-highlight">
+          <h3>Segurança com padrão profissional</h3>
+          <p>Nossa equipe entrega desde a análise do risco até a proteção completa do perímetro, com suporte contínuo e monitoramento próprio.</p>
+          <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-wpp" style="background:#000;color:#fff;box-shadow:none;font-size:15px;padding:12px 22px">
+            <svg class="svg-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar agora
+          </a>
+        </div>
+      </div>
+      <div class="diff-grid rv d2">
+        <div class="diff-item"><span class="diff-num">01</span><h4>Central própria de monitoramento</h4><p>Mais controle e agilidade. Não dependemos de terceiros para proteger seu imóvel.</p></div>
+        <div class="diff-item"><span class="diff-num">02</span><h4>Equipe técnica qualificada</h4><p>Instalação correta, suporte técnico e manutenção segura com profissionais treinados.</p></div>
+        <div class="diff-item"><span class="diff-num">03</span><h4>Atendimento local em Belém</h4><p>Presença local para instalação e assistência com resposta rápida onde você precisar.</p></div>
+        <div class="diff-item"><span class="diff-num">04</span><h4>Adequações GMTECH em Condomínios</h4><p>Organização de racks, manutenção de infraestrutura e modernização completa dos sistemas (CFTV, portões e controle de acesso).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- AUDIENCE -->
+<section class="audience">
+  <div class="container">
+    <div class="audience-inner">
+      <div class="rv"><p class="label">Para quem é</p><h2 class="title">Atendemos <em>você</em></h2><p class="body-text" style="margin-top:16px">Se você quer mais segurança para seu imóvel em Belém, podemos ajudar.</p></div>
+      <div class="audience-grid rv d2">
+        <div class="audience-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg><p>Residências</p></div>
+        <div class="audience-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg><p>Empresas</p></div>
+        <div class="audience-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Comércios</p></div>
+        <div class="audience-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><p>Condomínios</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROOF -->
+<section class="proof">
+  <div class="container">
+    <div class="proof-header rv" style="margin-bottom:32px"><p class="label">Projetos realizados</p><h2 class="title">Instalações em <em>Belém</em></h2><p class="body-text" style="margin-top:12px;margin-bottom:0">Soluções aplicadas com padrão profissional em residências, empresas e comércios.</p></div>
+    <div class="proof-grid rv d1">
+      <div class="proof-item"><img src="img/foto1.png" alt="Central de monitoramento"><div class="proof-caption"><span class="proof-caption-tag">Monitoramento</span><h4>Central de monitoramento ativa</h4></div></div>
+      <div class="proof-item"><img src="img/foto2.png" alt="Controle de acesso facial"><div class="proof-caption"><span class="proof-caption-tag">Controle de acesso</span><h4>Reconhecimento facial integrado</h4></div></div>
+      <div class="proof-item"><img src="img/foto3.png" alt="Instalação profissional"><div class="proof-caption"><span class="proof-caption-tag">Instalação</span><h4>Instalação profissional</h4></div></div>
+      <div class="proof-item"><img src="img/foto-hero.png" alt="Equipe técnica"><div class="proof-caption"><span class="proof-caption-tag">Segurança</span><h4>Equipe técnica em ação</h4></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-header rv"><p class="label">Avaliações</p><h2 class="title">O que nossos <em>clientes dizem</em></h2><p class="body-text" style="margin-top:12px">Clientes reais em Belém que confiaram na Visão de Águia.</p></div>
+    <div class="testi-grid rv d1">
+      <div class="testi-card">
+        <div class="testi-stars"><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-quote">"Instalaram o sistema de câmeras na minha loja em um dia. <strong>Atendimento rápido e profissional.</strong> Agora consigo monitorar tudo pelo celular de onde estiver."</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Roberto A.</div><div class="testi-role">Proprietário de comércio · Belém</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-quote">"Tinha câmeras de outra empresa que nunca funcionavam direito. A Visão de Águia refez tudo. <strong>Diferença total na qualidade e no suporte.</strong> Recomendo sem dúvida."</p>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Carla M.</div><div class="testi-role">Residência · Ananindeua</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-quote">"Monitoramento 24h dá tranquilidade de verdade. <strong>Já tivemos uma tentativa de invasão e a central avisou imediatamente.</strong> Profissionalismo em tudo."</p>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Marcos T.</div><div class="testi-role">Condomínio · Belém</div></div></div>
+      </div>
+    </div>
+    <div class="google-bar rv d2">
+      <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <span>Avaliação no Google: <em>5.0</em> / 5</span>
+      <a href="https://www.google.com/maps/search/visao+de+aguia+belem" target="_blank">Ver avaliações →</a>
+    </div>
+  </div>
+</section>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg-text">SEGURANÇA</div>
+  <div class="container cta-inner">
+    <p class="label rv">Próximo passo</p>
+    <h2 class="rv d1">Solicite avaliação e descubra a <em>melhor solução</em></h2>
+    <p class="body-text rv d2">Atendimento rápido pelo WhatsApp para residências, empresas e comércios em Belém. Orçamento gratuito e sem compromisso.</p>
+    <div class="rv d3">
+      <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+or%C3%A7amento+gratuito." target="_blank" class="btn-wpp" style="margin:0 auto">
+        <svg class="svg-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp — Gratuito
+      </a>
+    </div>
+  </div>
+</section>
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="container rv">
+    <div class="guarantee-box">
+      <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg></div>
+      <div><h3>Instalação profissional garantida</h3><p>Trabalhamos com equipamentos de qualidade e instalação profissional, garantindo o funcionamento correto do seu sistema. Nossa equipe está pronta para oferecer suporte sempre que necessário.</p></div>
+    </div>
+  </div>
+</section>
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-header rv" style="text-align:center"><p class="label" style="display:block;text-align:center">Dúvidas frequentes</p><h2 class="title" style="text-align:center">Perguntas <em>comuns</em></h2></div>
+    <div class="faq-list">
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>Vocês atendem em toda Belém e região?</span><div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Sim. Atendemos Belém e Grande Belém, incluindo Ananindeua, Marituba e municípios próximos. Entre em contato para confirmar a cobertura na sua localidade.</div></div>
+      <div class="faq-item rv d1"><div class="faq-q" onclick="toggleFaq(this)"><span>Como funciona o monitoramento 24 horas?</span><div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Nossa central própria monitora seu sistema em tempo real, 24 horas por dia, 7 dias por semana. Em caso de qualquer ocorrência nossa equipe entra em contato imediatamente e aciona os protocolos necessários.</div></div>
+      <div class="faq-item rv d2"><div class="faq-q" onclick="toggleFaq(this)"><span>Quanto tempo leva a instalação?</span><div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Depende do tamanho e complexidade do projeto. Instalações residenciais simples podem ser concluídas em um único dia. Projetos maiores são avaliados individualmente.</div></div>
+      <div class="faq-item rv d3"><div class="faq-q" onclick="toggleFaq(this)"><span>Consigo acompanhar as câmeras pelo celular?</span><div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Sim. Todos os sistemas de CFTV que instalamos incluem acesso remoto via aplicativo no celular.</div></div>
+      <div class="faq-item rv d4"><div class="faq-q" onclick="toggleFaq(this)"><span>Vocês fazem manutenção em sistemas de outras empresas?</span><div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Sim. Realizamos manutenção e suporte em sistemas de CFTV, alarmes e equipamentos de segurança eletrônica, independente de quem fez a instalação original.</div></div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo"><img src="img/logo.jpg" alt="Visão de Águia" class="footer-logo-img">VISÃO<span> DE ÁGUIA</span></span>
+        <p style="font-family:var(--fc);font-size:13px;color:var(--gold);letter-spacing:.5px;margin-top:4px">Segurança Eletrônica e Monitoramento</p>
+        <p class="footer-tagline">Proteção eletrônica para residências, empresas, comércios e condomínios em Belém. Central própria de monitoramento 24 horas.</p>
+      </div>
+      <div class="footer-col"><h4>Serviços</h4><a href="#">Monitoramento 24h</a><a href="#">Câmeras CFTV</a><a href="#">Cerca Elétrica</a><a href="#">Alarmes</a><a href="#">Concertina</a><a href="#">Manutenção</a></div>
+      <div class="footer-col"><h4>Atendimento</h4><p>Belém – PA</p><p>Grande Belém e região</p><p class="hours">Seg – Sex: 8h às 18h<br>Sáb: 8h às 13h</p><p style="margin-top:8px;font-size:12px;color:#444">Urgências 24h pelo WhatsApp</p></div>
+      <div class="footer-col"><h4>Contato</h4>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg><a href="https://wa.me/5591982324510" target="_blank">(91) 98232-4510</a></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><a href="https://instagram.com/visaodeaguiaofc" target="_blank">@visaodeaguiaofc</a></div>
+        <a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-wpp" style="margin-top:20px;font-size:14px;padding:12px 20px">
+          <svg class="svg-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar agora
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Visão de Águia Segurança Eletrônica · Belém – PA</span><span>Todos os direitos reservados</span></div>
+  </div>
+</footer>
+<!-- FLOATING WPP -->
+<a href="https://wa.me/5591982324510?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+or%C3%A7amento+gratuito." target="_blank" class="wpp-float" title="Falar no WhatsApp">
+  <svg class="svg-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('on');obs.unobserve(el.target)}})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function toggleFaq(q){const i=q.parentElement;const w=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!w)i.classList.add('open')}
+/* Counter animation */
+function animateCounters(){document.querySelectorAll('.trust-num[data-target]').forEach(el=>{const t=+el.dataset.target;const suffix=el.dataset.target==='4'?'+':el.dataset.target==='1000'?'+':'h';let c=0;const step=Math.max(1,Math.floor(t/40));const timer=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(timer)}el.textContent=c+suffix},30)})}
+const heroObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){animateCounters();heroObs.unobserve(el.target)}})},{threshold:.3});
+const trustEl=document.querySelector('.hero-trust');if(trustEl)heroObs.observe(trustEl);
+</script>
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Visão de Águia Segurança Eletrônica","description":"Segurança eletrônica em Belém. Monitoramento 24h, CFTV, alarmes, cercas elétricas e controle de acesso.","telephone":"+5591982324510","url":"https://visaodeaguia.netlify.app","address":{"@type":"PostalAddress","addressLocality":"Belém","addressRegion":"PA","addressCountry":"BR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"3"},"openingHours":["Mo-Fr 08:00-18:00","Sa 08:00-13:00"]}
+</script>
+</body>
+</html>
+
+
+
+
