@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -86,7 +86,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(9,11,13,.97);backdrop-filte
 .cred-item:last-child{border-right:none}
 .cred-icon{width:20px;height:20px;flex-shrink:0;color:var(--gold)}
 .problem{padding:80px 0;background:var(--dark)}
-.problem-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.problem-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
 .problem-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:32px}
 .problem-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-left:2px solid rgba(180,50,40,.5);font-size:14px;color:var(--soft);border-radius:var(--r)}
 .problem-item::before{content:'—';color:#b43228;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;font-family:var(--fc)}
@@ -112,7 +112,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(9,11,13,.97);backdrop-filte
 .services{padding:80px 0;background:var(--dark)}
 .services-header{margin-bottom:56px}
 .services-group-label{font-family:var(--fc);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:24px}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:48px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:48px}
 .service-card{background:var(--card);padding:32px 26px;display:flex;flex-direction:column;gap:10px;transition:background .2s;position:relative;overflow:hidden}
 .service-card:hover{background:var(--card2)}
 .service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transform:scaleX(0);transition:transform .3s;transform-origin:left}
@@ -127,7 +127,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(9,11,13,.97);backdrop-filte
 .service-card:hover .sc-cta{color:var(--white)}
 .sc-cta::after{content:'↗';font-size:11px}
 .differentials{padding:80px 0}
-.differentials-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.differentials-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
 .diff-item{background:var(--card);padding:28px;transition:background .2s}
 .diff-item:hover{background:var(--card2)}
@@ -147,7 +147,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(9,11,13,.97);backdrop-filte
 .proof{padding:80px 0}
 .proof-header{margin-bottom:48px}
 .proof-header .body-text{max-width:520px;margin-top:12px}
-.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border-radius:var(--r);overflow:hidden}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px;border-radius:var(--r);overflow:hidden}
 .proof-item{position:relative;overflow:hidden;aspect-ratio:2/3;cursor:pointer;background:var(--card2)}
 .proof-item img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.5) saturate(.5);transition:transform .5s cubic-bezier(.25,.46,.45,.94),filter .4s}
 .proof-item:hover img{transform:scale(1.07);filter:brightness(.7) saturate(.75)}
@@ -338,7 +338,7 @@ footer{background:#060708;border-top:1px solid var(--border);padding:70px 0 32px
       </div>
       <div class="solution-box rv d2">
         <p class="label">A solução</p>
-        <h3 class="title" style="font-size:clamp(34px,3.5vw,50px)">Segurança <em>completa</em></h3>
+        <h3 class="title" style="font-size:clamp(34px,3vw,50px)">Segurança <em>completa</em></h3>
         <p>A Visão de Águia resolve isso com soluções completas de segurança eletrônica. Instalamos, configuramos e monitoramos todo o sistema para que você tenha tranquilidade 24 horas, todos os dias.</p>
         <div class="solution-checks">
           <div class="solution-check">Central própria de monitoramento 24h</div>
@@ -370,7 +370,7 @@ footer{background:#060708;border-top:1px solid var(--border);padding:70px 0 32px
 <!-- SERVICES -->
 <section class="services" id="servicos">
   <div class="container">
-    <div class="services-header rv"><p class="label">O que fazemos</p><h2 class="title">Nossos <em>Serviços</em></h2></div>
+    <div class="services-header rv"><p class="label">O que fazemos</p><h2 class="title" style="font-size:clamp(36px,4.5vw,72px);white-space:nowrap">Nossos <em style="display:inline">Serviços</em></h2></div>
     <p class="services-group-label rv">Soluções Principais</p>
     <div class="services-grid rv d1">
       <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="sc-name">Monitoramento 24 Horas</div><div class="sc-desc">Proteção contínua com acompanhamento em tempo real pela nossa central própria.</div><div class="sc-benefit">Resposta rápida em qualquer situação</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+monitoramento+24h." target="_blank" class="sc-cta">Saiba mais</a></div>
@@ -384,6 +384,10 @@ footer{background:#060708;border-top:1px solid var(--border);padding:70px 0 32px
       <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="sc-name">Fechadura Elétrica</div><div class="sc-desc">Controle de acesso moderno e seguro. Abre e fecha remotamente pelo celular ou painel.</div><div class="sc-benefit">Controle total do acesso</div><a href="https://wa.me/5591982324510?text=Tenho+interesse+em+fechadura+eletrica." target="_blank" class="sc-cta">Saiba mais</a></div>
       <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="sc-name">Manutenção</div><div class="sc-desc">Manutenção em sistemas de CFTV, alarmes e equipamentos de segurança eletrônica.</div><div class="sc-benefit">Seu sistema sempre funcionando</div><a href="https://wa.me/5591982324510?text=Preciso+de+manutencao+no+meu+sistema." target="_blank" class="sc-cta">Saiba mais</a></div>
       <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div><div class="sc-name">Motor de Portão</div><div class="sc-desc">Instalação e manutenção de motores de portão automático para residências e empresas.</div><div class="sc-benefit">Praticidade e segurança na entrada</div><a href="https://wa.me/5591982324510?text=Preciso+de+motor+de+portao." target="_blank" class="sc-cta">Saiba mais</a></div>
+    </div>
+    <p class="services-group-label rv" style="margin-top:48px">Soluções para Condomínios</p>
+    <div class="services-grid rv d1" style="grid-template-columns:1fr">
+      <div class="service-card"><div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div class="sc-name">Adequações em Condomínios (GMTECH)</div><div class="sc-desc">Reestruturação completa: organização de rack de cabeamento, manutenção de DVRs, modernização do controle de acesso (biometria/facial) e cancelas. Tudo em conformidade técnica.</div><div class="sc-benefit">Infraestrutura organizada e acesso seguro</div><a href="https://wa.me/5591982324510?text=Preciso+de+adequacao+para+meu+condominio." target="_blank" class="sc-cta">Falar com o técnico</a></div>
     </div>
   </div>
 </section>
@@ -408,7 +412,7 @@ footer{background:#060708;border-top:1px solid var(--border);padding:70px 0 32px
         <div class="diff-item"><span class="diff-num">01</span><h4>Central própria de monitoramento</h4><p>Mais controle e agilidade. Não dependemos de terceiros para proteger seu imóvel.</p></div>
         <div class="diff-item"><span class="diff-num">02</span><h4>Equipe técnica qualificada</h4><p>Instalação correta, suporte técnico e manutenção segura com profissionais treinados.</p></div>
         <div class="diff-item"><span class="diff-num">03</span><h4>Atendimento local em Belém</h4><p>Presença local para instalação e assistência com resposta rápida onde você precisar.</p></div>
-        <div class="diff-item"><span class="diff-num">04</span><h4>Soluções completas</h4><p>Da análise do risco à proteção do perímetro. Um único parceiro para tudo.</p></div>
+        <div class="diff-item"><span class="diff-num">04</span><h4>Adequações GMTECH em Condomínios</h4><p>Organização de racks, manutenção de infraestrutura e modernização completa dos sistemas (CFTV, portões e controle de acesso).</p></div>
       </div>
     </div>
   </div>
@@ -430,7 +434,7 @@ footer{background:#060708;border-top:1px solid var(--border);padding:70px 0 32px
 <!-- PROOF -->
 <section class="proof">
   <div class="container">
-    <div class="proof-header rv"><p class="label">Projetos realizados</p><h2 class="title">Instalações em <em>Belém</em></h2><p class="body-text">Soluções aplicadas com padrão profissional em residências, empresas e comércios.</p></div>
+    <div class="proof-header rv" style="margin-bottom:32px"><p class="label">Projetos realizados</p><h2 class="title">Instalações em <em>Belém</em></h2><p class="body-text" style="margin-top:12px;margin-bottom:0">Soluções aplicadas com padrão profissional em residências, empresas e comércios.</p></div>
     <div class="proof-grid rv d1">
       <div class="proof-item"><img src="img/foto1.png" alt="Central de monitoramento"><div class="proof-caption"><span class="proof-caption-tag">Monitoramento</span><h4>Central de monitoramento ativa</h4></div></div>
       <div class="proof-item"><img src="img/foto2.png" alt="Controle de acesso facial"><div class="proof-caption"><span class="proof-caption-tag">Controle de acesso</span><h4>Reconhecimento facial integrado</h4></div></div>
@@ -547,5 +551,7 @@ const trustEl=document.querySelector('.hero-trust');if(trustEl)heroObs.observe(t
 </script>
 </body>
 </html>
+
+
 
 
